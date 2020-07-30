@@ -1,7 +1,7 @@
 /*
  * @Author: svanrj
  * @Date: 2020-07-30 11:58:02
- * @LastEditTime: 2020-07-30 12:09:16
+ * @LastEditTime: 2020-07-30 12:13:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www.svanrj.tope:\html\javascript\js\svanrj.js
@@ -57,3 +57,4 @@
   }
   window.svanrj.getAttr = getAttr;
 })()
+// window表示作用于全局
