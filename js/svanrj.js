@@ -1,7 +1,7 @@
 /*
  * @Author: svanrj
  * @Date: 2020-07-30 11:58:02
- * @LastEditTime: 2020-07-30 12:13:19
+ * @LastEditTime: 2020-08-03 19:20:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www.svanrj.tope:\html\javascript\js\svanrj.js
@@ -56,5 +56,32 @@
     return node.getAttribute(style);
   }
   window.svanrj.getAttr = getAttr;
+  /**
+   * @description:获取class 
+   * @param {string}className 
+   * @return: 
+   */
+  function getClassName(className) {
+    return document.querySelector(className);
+  }
+  window.svanrj.getClassName = getClassName;
+  /**
+   * @description:EventListener事件
+   * @param {Dom Type Function}nodeDom, eventType, handlerFunction
+   * @return: 
+   */
+  function addEvent(nodeDom, eventType, handlerFunction) {
+    nodeDom.addEventListener(eventType, handlerFunction);
+  }
+  window.svanrj.addEvent = addEvent;
+  /**
+   * @description:EventListener事件
+   * @param {Dom Type Function}nodeDom, eventType, handlerFunction
+   * @return: 
+   */
+  function removeEvent(nodeDom, eventType, handlerFunction) {
+    nodeDom.removeEventListener(eventType, handlerFunction);
+  }
+  window.svanrj.removeEvent = removeEvent;
 })()
 // window表示作用于全局
