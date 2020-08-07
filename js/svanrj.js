@@ -1,7 +1,7 @@
 /*
  * @Author: svanrj
  * @Date: 2020-07-30 11:58:02
- * @LastEditTime: 2020-08-03 19:20:08
+ * @LastEditTime: 2020-08-07 16:40:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www.svanrj.tope:\html\javascript\js\svanrj.js
@@ -66,6 +66,24 @@
   }
   window.svanrj.getClassName = getClassName;
   /**
+   * @description:获取父级下内容 (第一级)
+   * @param {string}className 
+   * @return:dom 
+   */
+  function getChild(className) {
+    return className.children;
+  }
+  window.svanrj.getChild = getChild;
+  /**
+   * @description:获取tag内容 
+   * @param {Dom string}className 
+   * @return:dom 
+   */
+  function getTagName(parentNode, tagName) {
+    return parentNode.getElementsByTagName(tagName);
+  }
+  window.svanrj.getTagName = getTagName;
+  /**
    * @description:EventListener事件
    * @param {Dom Type Function}nodeDom, eventType, handlerFunction
    * @return: 
@@ -83,5 +101,14 @@
     nodeDom.removeEventListener(eventType, handlerFunction);
   }
   window.svanrj.removeEvent = removeEvent;
+  /**
+   * @description:为父级末尾添加元素
+   * @param {parentNode nodedom}nodeDom, eventType, handlerFunction
+   * @return: 
+   */
+  function addChild(parentNode, nodeDom) {
+    parentNode.appendChild(nodeDom);
+  }
+  window.svanrj.addChild = addChild;
 })()
 // window表示作用于全局
