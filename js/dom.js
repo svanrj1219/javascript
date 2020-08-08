@@ -2,7 +2,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-08 17:09:06
- * @LastEditTime: 2020-08-08 17:11:40
+ * @LastEditTime: 2020-08-08 18:25:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www.svanrj.tope:\html\javascript\js\dom.js
@@ -20,3 +20,7 @@ const faceViewList = svanrj.getClassName('.face-view-list');
 const faceDelButton = svanrj.getTagName(faceView, 'a')[0];
 //通过id获取元素
 const infoDialog = svanrj.$('info-dialog');
+// 头像高光
+let faceSave = null;
+//姓名输入框
+const inputUserName = svanrj.$('inputUserName');

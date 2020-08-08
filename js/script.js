@@ -36,15 +36,22 @@ svanrj.addEvent(faceViewList, 'click', function (e) {
   const createImg = svanrj.createEl('img');
   //获取img对象
   const getImg = svanrj.getTagName(faceView, 'img');
+  // 清除头像上次高光
+  if (faceSave) {
+    faceSave.classList.remove('active');
+  }
   let imgSrc = '';
   //添加数据
   if (nodeName === 'li') {
     const img = svanrj.getChild(ev.target)[0];
     imgSrc = img.src;
+    faceSave = ev.target;
   }
   if (nodeName === 'img') {
     imgSrc = ev.target.src;
+    faceSave = ev.target.parentNode;
   }
+  faceSave.classList.add('active')
   faceUpdate({
     getImg,
     createImg,
@@ -72,6 +79,17 @@ svanrj.addEvent(faceDelButton, 'click', function (e) {
 svanrj.addEvent(addInfoButton, 'click', function () {
   infoDialog.classList.add('dialog-show');
 });
+
+//输入框判断
+inputUserName.onblur = function () {
+  let value = this.value;
+  if (!value) {
+    UI.$message({
+      message: '<strong>姓名</strong>不能为空',
+      duration: 2000
+    });
+  }
+}
 
 // 删除注册点击事件
 // svanrj.removeEvent(addInfoButton, 'click', show)

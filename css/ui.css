@@ -1,0 +1,40 @@
+#alert-ui {
+  position: fixed;
+  width: 380px;
+  padding: 20px;
+  top: -300px;
+  left: 50%;
+  z-index: 100;
+  margin-left: -190px;
+  border: 1px solid #ebeef5;
+  background-color: #edf2fc;
+  color: #000;
+  border-radius: 4px;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+#alert-ui.show {
+  top: 30px;
+}
+
+/* 主题  */
+/* 成功 */
+#alert-ui.message-theme-success {
+  background-color: #f0f9eb;
+  border-color: #e1f3d8;
+  color: #67c23a;
+}
+/* 警告 */
+#alert-ui.message-theme-warning {
+  background-color: #fdf6ec;
+  border-color: #faecd8;
+  color: #e6a23c;
+}
+#alert-ui.message-theme-error {
+  background-color: #fef0f0;
+  border-color: #fde2e2;
+  color: #f56c6c;
+}
