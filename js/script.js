@@ -1,15 +1,5 @@
 "use script" //严格模式
 
-// 获取元素
-const divDom = svanrj.$('table-data-wrap');
-//创建dom对象
-const tableDom = svanrj.createEl('table');
-//通过类名获取dom元素
-const addInfoButton = svanrj.getClassName('.add-info-button');
-const faceView = svanrj.getClassName('.face-view');
-const faceViewList = svanrj.getClassName('.face-view-list');
-//通过id获取元素
-const infoDialog = svanrj.$('info-dialog');
 // 设置属性
 svanrj.setAttr(tableDom, {
   'width': '100%',
@@ -36,18 +26,12 @@ divDom.append(tableDom);
 svanrj.addEvent(faceView, 'click', function () {
   handlerFaceList();
 })
-
-function handlerFaceListCallback(data) {
-  console.log(data.data)
-  liHtml = '';
-  for (let key of data.data) {
-    liHtml += `<li><img src="${key}"alt=""></li>`
-  }
-  faceViewList.innerHTML = liHtml;
-}
+//点击更新头像
 svanrj.addEvent(faceViewList, 'click', function (e) {
+  // 兼容处理
+  const ev = e || window.event;
   //获取点击内容标签名称
-  nodeName = e.target.nodeName.toLowerCase();
+  nodeName = ev.target.nodeName.toLowerCase();
   //创建img对象
   const createImg = svanrj.createEl('img');
   //获取img对象
@@ -55,31 +39,39 @@ svanrj.addEvent(faceViewList, 'click', function (e) {
   let imgSrc = '';
   //添加数据
   if (nodeName === 'li') {
-    const img = svanrj.getChild(e.target)[0];
+    const img = svanrj.getChild(ev.target)[0];
     imgSrc = img.src;
   }
   if (nodeName === 'img') {
-    imgSrc = e.target.src;
+    imgSrc = ev.target.src;
   }
-  //判断img标签是否存在，
-  //如果已存在直接修改src内容
-  if (getImg.length != 0) {
-    getImg[0].src = imgSrc;
+  faceUpdate({
+    getImg,
+    createImg,
+    imgSrc,
+    type: 'add'
+  })
+})
+// 点击删除头像
+svanrj.addEvent(faceDelButton, 'click', function (e) {
+  const ev = e || window.event;
+  const getImg = svanrj.getTagName(faceView, 'img')[0];
+  faceUpdate({
+    getImg,
+    type: 'del'
+  })
+  阻止事件冒泡
+  if (ev.stopPropagation) {
+    ev.stopPropagation();
   } else {
-    //不存在就创建img标签并添加src属性
-    svanrj.addChild(faceView, createImg)
-    getImg[0].src = imgSrc;
+    ev.cancelBubble = true;
   }
 })
-//添加按钮点击效果
+
+//添加信息点击
 svanrj.addEvent(addInfoButton, 'click', function () {
   infoDialog.classList.add('dialog-show');
 });
-
-
-
-
-
 
 // 删除注册点击事件
 // svanrj.removeEvent(addInfoButton, 'click', show)

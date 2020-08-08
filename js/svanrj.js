@@ -1,7 +1,7 @@
 /*
  * @Author: svanrj
  * @Date: 2020-07-30 11:58:02
- * @LastEditTime: 2020-08-07 16:40:11
+ * @LastEditTime: 2020-08-07 18:32:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \www.svanrj.tope:\html\javascript\js\svanrj.js
@@ -84,21 +84,30 @@
   }
   window.svanrj.getTagName = getTagName;
   /**
-   * @description:EventListener事件
+   * @description:EventListener添加事件
    * @param {Dom Type Function}nodeDom, eventType, handlerFunction
    * @return: 
    */
   function addEvent(nodeDom, eventType, handlerFunction) {
-    nodeDom.addEventListener(eventType, handlerFunction);
+    // 兼容性处理
+    if (window.addEventListener) {
+      nodeDom.addEventListener(eventType, handlerFunction);
+    } else {
+      nodeDom.attachEvent(`on${eventType}`, handlerFunction);
+    }
   }
   window.svanrj.addEvent = addEvent;
   /**
-   * @description:EventListener事件
+   * @description:EventListener删除事件
    * @param {Dom Type Function}nodeDom, eventType, handlerFunction
    * @return: 
    */
   function removeEvent(nodeDom, eventType, handlerFunction) {
-    nodeDom.removeEventListener(eventType, handlerFunction);
+    if (window.removeEventListener) {
+      nodeDom.removeEventListener(eventType, handlerFunction);
+    } else {
+      nodeDom.detachEvent(`on${eventType}`, handlerFunction);
+    }
   }
   window.svanrj.removeEvent = removeEvent;
   /**
